@@ -1,0 +1,14 @@
+{
+  "name": "csdhometheme",
+  "homepage": "https://craigsteel-design.com/",
+  "version": "1.0.0",
+  "author": "Craig Steel <craig@craigsteel-design.com>",
+  "description": "Craig Steel Design Wordpress Theme, based on the Genesis Framework.",
+  "repository": "https://github.com/craigsteel/CSD-Wordpress-Theme.git",
+  "license": "GPL-2.0",
+  "main": "Gulpfile.js",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-wp-toolkit": "^2"
+  }
+}
