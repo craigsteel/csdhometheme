@@ -1,8 +1,9 @@
 # Dependency directories
 node_modules/*
 
-# scss directories
+# developer directories
 development/scss
+development/images
 
 # Anything by PHPStorm
 .idea/**/*
