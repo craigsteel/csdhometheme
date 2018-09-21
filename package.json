@@ -1,10 +1,10 @@
-{
+{ 
   "name": "csdhometheme",
   "homepage": "https://craigsteel-design.com/",
   "version": "1.0.0",
   "author": "Craig Steel <craig@craigsteel-design.com>",
   "description": "Craig Steel Design Wordpress Theme, based on the _underscores.",
-  "repository": "https://github.com/craigsteel/CSD-WORDPRESS-THEME.git",
+  "repository": "https://github.com/craigsteel/csdhometheme.git",
   "license": "MIT License",
   "main": "Gulpfile.js",
   "dependencies": {
