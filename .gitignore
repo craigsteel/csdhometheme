@@ -1,11 +1,30 @@
-# Dependency directories
-node_modules/*
+# VSCode Workspace Settings #
+.vscode
+
+# NPM #
+##########
+node_modules
+package-lock.json
+
+# Compiled Files and Build Dirs #
+##########
+/README.html
 
 # developer directories
-development/scss
-development/images
+develop/**
+.vscode
+.config.js
+
+# Composer #
+##########
+vendor
+assets/**
+wpcs/
+composer.lock
 
 # Anything by PHPStorm
 .idea/**/*
 
-/vendor/
+images
+
+yarn.lock
