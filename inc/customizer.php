@@ -1,9 +1,13 @@
 <?php
 /**
- * csd home theme Theme Customizer
+ * csdhometheme Customizer
  *
- * @package csd_home_theme
+ * @package csdhometheme
  */
+
+  // No direct access, please
+if (!defined('ABSPATH')) exit; // Exit if accessed directly
+ 
 
 /**
  * Add postMessage support for site title and description for the Theme Customizer.
@@ -46,10 +50,10 @@ function csdhometheme_customize_partial_blogdescription() {
 	bloginfo( 'description' );
 }
 
-/**
- * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
- */
-function csdhometheme_customize_preview_js() {
-	wp_enqueue_script( 'csdhometheme-customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '20151215', true );
-}
-add_action( 'customize_preview_init', 'csdhometheme_customize_preview_js' );
+// /**
+//  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
+//  */
+// function csdhometheme_customize_preview_js() {
+// 	wp_enqueue_script( 'csdhometheme-customizer', get_template_directory_uri() . 'develop/js/customizer.js', array( 'customize-preview' ), '20151215', true );
+// }
+// add_action( 'customize_preview_init', 'csdhometheme_customize_preview_js' );

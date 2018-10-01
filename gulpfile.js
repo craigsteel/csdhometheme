@@ -1,55 +1,65 @@
-'use strict';
+/* eslint-disable */
 
-var gulp = require('gulp'),
-  pkg = require('./package.json'),
-  toolkit = require('gulp-wp-toolkit');
+const newLocal = 'use strict';
+
+const gulp = require('gulp');
+    pkg = require('./package.json');
+    toolkit = require('gulp-wp-toolkit');
 
 toolkit.extendConfig({
   theme: {
-    name: "WordPress Theme Name",
+    name: 'csdhometheme',
     homepage: pkg.homepage,
     description: pkg.description,
     author: pkg.author,
     version: pkg.version,
     license: pkg.license,
-    textdomain: pkg.name
+    textdomain: pkg.name,
   },
   js: {
-    'global': [ /* File will be output as global.js and global.min.js */
+    'custom': [
+      'develop/js/jquery.js',
+      'develop/js/custom.js',
       'develop/js/customizer.js',
       'develop/js/navigation.js',
-      'develop/js/skip-link-focus-fix.js',
-      'develop/js/main.js'
-    ],
+      'develop/js/skip-link-focus.js',
+    ]
   },
+  dest: {
+    js: 
+     'dist/js/', /* Output path. */
+  //   outputStyle: 'compressed', /* Set expanded output style. */
+  //   sourceMap: false,
+  },
+
   server: {
     proxy: 'craigs-imac.local/craigsteeldesigntheme',
     online: true,
   },
+
   src: {
     zipuser: [
       'images/*',
-      'includes/**/*',
-      'includes-vendors/**/*',
-      'js/*',
+      'inc/**/*',
+      'vendor/**/*',
+      'dist/*',
       'languages/*',
       'front-page.php',
       'functions.php',
       'LICENSE.md',
-      'page_landing.php',
       'readme.txt',
       'screenshot.png',
       'style*',
     ],
     zipdev: [
-      'development/images/*',
-      'development/js/*',
-      'development/languages/*',
-      'development/scss/**/*',
+      'develop/images/*',
+      'develop/js/*',
+      'develop/languages/*',
+      'develop/scss/**/*',
       'images/*',
-      'includes/**/*',
-      'includes-vendors/**/*',
-      'js/*',
+      'inc/**/*',
+      'vendor/**/*',
+      'dist/*',
       'languages/*',
       'CHANGELOG.md',
       'composer.json',
@@ -59,37 +69,40 @@ toolkit.extendConfig({
       'Gulpfile.js',
       'LICENSE.md',
       'package.json',
-      'page_landing.php',
       'readme.txt',
       'README.md',
       'screenshot.png',
       'style*',
+      '*.php',
     ],
   },
   css: {
     basefontsize: 16, // Used by postcss-pxtorem.
     cssnano: {
       discardComments: {
-        removeAll: true
+        removeAll: true,
       },
-        zindex: false,
-      },
-      remreplace: false, // Used by postcss-pxtorem.
-      remmediaquery: true, // Used by postcss-pxtorem.
-      'woocommerce': { /* Output filename */
+      zindex: false,
+    },
+    remreplace: false, // Used by postcss-pxtorem.
+    remmediaquery: true, // Used by postcss-pxtorem.
+
     scss: {
-        src: 'develop/scss/woocommerce.scss', /* Input file */
-        dest: 'css/' /* Output path. */
+      'style': {
+        src: 'develop/scss/style.scss', /* Input file */
+        dest: 'assets/css/', /* Output path. */
+        outputStyle: 'expanded', /* Set expanded output style. */
+        sourceMap: true,
       },
-      'edd': { /* Output filename */
-        src: 'develop/scss/edd.scss', /* Input file */
-        dest: 'css/', /* Output path. */
-        outputStyle: 'compressed', /* Set expanded output style. */
-        sourceMap: false,
+      'mainStyle' : {
+        src: 'develop/scss/style.scss', /* Input file */
+        dest: 'dist/css/', /* Output path. */
+        outputStyle: 'compressed', /* Set compressed output style. */
+        sourceMap: true,
       },
     },
   },
-}),
+});
 
 toolkit.extendTasks(gulp, {
   // Task Name.
@@ -98,9 +111,17 @@ toolkit.extendTasks(gulp, {
     function () {
       console.log('This is an extended task. It depends on `build`');
     },
-    ],
-    'something-conditional': [
-      'develop/js/standalone.js'
-    ]
-  }
+  ],
+  'lint:php': [['lint:phpcs']], // How not to run lint:phpmd.
+  'zip': [['zipuser', 'zipdev']],
+  'zipuser': function () {
+    return gulp.src(toolkit.extendConfig.src.zipuser, { base: './' }).
+      pipe(zip(pkg.name + '-' + pkg.version + '.zip')).
+      pipe(gulp.dest('dist'));
+  },
+  'zipdev': function () {
+    return gulp.src(toolkit.extendConfig.src.zipdev, { base: './' }).
+      pipe(zip(pkg.name + '-developer-' + pkg.version + '.zip')).
+      pipe(gulp.dest('dist'));
+  },
 });

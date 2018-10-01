@@ -1,0 +1,16 @@
+{
+    "name": "craigsteel/csdhometheme",
+    "type": "project",
+    "license": "gpl",
+    "authors": [
+        {
+            "name": "craigsteel",
+            "email": "craig@craigsteel-design.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {"Inc\\": "./inc"}
+    }
+}

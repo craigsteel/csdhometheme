@@ -8,8 +8,11 @@
  *
  * @link https://developer.wordpress.org/themes/functionality/custom-headers/
  *
- * @package csd_home_theme
+ * @package csdhometheme
  */
+
+ // No direct access, please
+if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
 /**
  * Set up the WordPress core custom header feature.

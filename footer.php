@@ -6,8 +6,11 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package csd_home_theme
+ * @package csdhometheme
  */
+
+    // No direct access, please
+if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
 ?>
 

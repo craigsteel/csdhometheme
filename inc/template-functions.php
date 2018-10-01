@@ -2,8 +2,11 @@
 /**
  * Functions which enhance the theme by hooking into WordPress
  *
- * @package csd_home_theme
+ * @package csdhometheme
  */
+
+  // No direct access, please
+if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
 /**
  * Adds custom classes to the array of body classes.

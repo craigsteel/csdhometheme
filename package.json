@@ -1,4 +1,4 @@
-{ 
+{
   "name": "csdhometheme",
   "homepage": "https://craigsteel-design.com/",
   "version": "1.0.0",
@@ -7,7 +7,7 @@
   "repository": "https://github.com/craigsteel/csdhometheme.git",
   "license": "MIT License",
   "main": "Gulpfile.js",
-  "dependencies": {
+  "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-wp-toolkit": "^2"
   }

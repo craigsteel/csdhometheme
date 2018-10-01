@@ -1,0 +1,12 @@
+/*-------------------------
+*  Media Queries
+*--------------------------*/
+$xs: 480px;
+$sm: 600px;
+$md: 800px;
+$mdl: 950px;
+$lg: 1190px;
+$xl: 1440px;
+$xxl: 1700px;
+
+$breakpoints: ('xs': $xs, 'sm': $sm, 'md': $md, 'mdl': $mdl,'lg': $lg, 'xl': $xl);

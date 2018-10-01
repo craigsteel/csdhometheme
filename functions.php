@@ -4,8 +4,15 @@
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package csd_home_theme
+ * @package csdhometheme
  */
+
+ // No direct access, please
+if (!defined('ABSPATH')) exit; // Exit if accessed directly
+
+if (file_exists(dirname(__FILE__) . '/vendor/autoload.php ')) {
+	require_once dirname(__FILE__) . '/vendor/autoload';
+}
 
 if ( ! function_exists( 'csdhometheme_setup' ) ) :
 	/**
@@ -120,11 +127,15 @@ add_action( 'widgets_init', 'csdhometheme_widgets_init' );
  * Enqueue scripts and styles.
  */
 function csdhometheme_scripts() {
-	wp_enqueue_style( 'csdhometheme-style', get_stylesheet_uri() );
+	wp_enqueue_style('csdhometheme-fonts', csdhometheme_fonts_url() );
+	wp_enqueue_style('csdhometheme-style', get_stylesheet_uri() );
+	wp_enqueue_style('csdhometheme-mainstyle', get_template_directory_uri() . '/dist/css/mainStyle.css');
 
-	wp_enqueue_script( 'csdhometheme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+	// wp_deregister_script('jquery');
+	// wp_register_script('jquery', get_template_directory_uri() . '/dist/js/jquery.js', false, '3.3.1', true);
+	// wp_enqueue_script('jquery');
 
-	wp_enqueue_script( 'csdhometheme-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+	wp_enqueue_script( 'csdhometheme-custom', get_template_directory_uri() . '/dist/js/custom.min.js', array(), '3.3.1', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -146,6 +157,11 @@ require get_template_directory() . '/inc/template-tags.php';
  * Functions which enhance the theme by hooking into WordPress.
  */
 require get_template_directory() . '/inc/template-functions.php';
+
+/**
+ * Implement the Custom Fonts
+ */
+require get_template_directory() . '/inc/custom-fonts.php';
 
 /**
  * Customizer additions.

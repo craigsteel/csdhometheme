@@ -7,3 +7,5 @@ development/images
 
 # Anything by PHPStorm
 .idea/**/*
+
+/vendor/

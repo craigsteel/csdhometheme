@@ -4,8 +4,11 @@
  *
  * Eventually, some of the functionality here could be replaced by core features.
  *
- * @package csd_home_theme
+ * @package csdhometheme
  */
+
+  // No direct access, please
+if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
 if ( ! function_exists( 'csdhometheme_posted_on' ) ) :
 	/**
